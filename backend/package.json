@@ -1,0 +1,33 @@
+{
+  "name": "comp3133-assignment2-backend",
+  "version": "1.0.0",
+  "main": "src/server.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node-dev --transpile-only --no-notify --exit-child src/server.ts",
+    "db:dev:up": "docker compose up mongodb-local -d",
+    "db:dev:rm": "docker compose rm mongodb-local -s -f -v",
+    "db:dev:restart": "npm run db:dev:rm && npm run db:dev:up"
+  },
+  "keywords": [],
+  "dependencies": {
+    "apollo-server-express": "^3.13.0",
+    "argon2": "^0.31.2",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.1",
+    "nexus": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^20.11.16",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "author": "Jerome Delos Reyes",
+  "license": "UNLICENSED"
+}
