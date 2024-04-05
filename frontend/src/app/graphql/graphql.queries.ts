@@ -14,8 +14,8 @@ export const GET_EMPLOYEES = gql`
 `;
 
 export const GET_EMPLOYEE = gql`
-  query GetEmployee {
-    getEmployee(_id: null) {
+  query GetEmployee(_id: String!) {
+    getEmployee(_id: $_id) {
       _id
       firstName
       lastName
@@ -27,29 +27,41 @@ export const GET_EMPLOYEE = gql`
 `;
 
 export const SIGNUP = gql`
-  mutation Signup {
-    signup(email: null, userName: null, password: null) {
+  mutation Signup($email: String!, $userName: String!, $password: String!) {
+    signup(email: $email, userName: $userName, password: $password) {
       token
+      user {
+        _id
+        userName
+        email
+        password
+      }
     }
   }
 `;
 
 export const LOGIN = gql`
-  mutation Login {
-    login(userName: null, password: null) {
+  mutation Login($userName: String!, $password: String!) {
+    login(userName: $userName, password: $password) {
       token
     }
   }
 `;
 
 export const CREATE_EMPLOYEE = gql`
-  mutation CreateEmployee {
+  mutation CreateEmployee(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $gender: String!
+    $salary: String!
+  ) {
     createEmployee(
-      firstName: null
-      lastName: null
-      email: null
-      gender: null
-      salary: null
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      gender: $gender
+      salary: $salary
     ) {
       _id
       firstName
@@ -62,8 +74,8 @@ export const CREATE_EMPLOYEE = gql`
 `;
 
 export const UPDATE_EMPLOYEE = gql`
-  mutation UpdateEmployee {
-    updateEmployee(_id: null) {
+  mutation UpdateEmployee($_id: String!) {
+    updateEmployee(_id: $_id) {
       _id
       firstName
       lastName
@@ -75,8 +87,8 @@ export const UPDATE_EMPLOYEE = gql`
 `;
 
 export const DELETE_EMPLOYEE = gql`
-  mutation DeleteEmployee {
-    deleteEmployee(_id: null) {
+  mutation DeleteEmployee($_id: String!) {
+    deleteEmployee(_id: $_id) {
       _id
       firstName
       lastName

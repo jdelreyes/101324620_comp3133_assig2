@@ -1,0 +1,44 @@
+<form [formGroup]="registerForm" (submit)="register()">
+  <h1 class="hidden">{{ title }}</h1>
+  <fieldset
+    class="max-w-[450px] border-2 border-black rounded m-auto p-3 bg-slate-200"
+  >
+    <legend class="text-4xl bold m-2">{{ title }}</legend>
+    <div class="flex flex-row justify-between text-xl m-2 items-center">
+      <label for="email">Email</label>
+      <input
+        class="max-w-[250px] border-2 border-black rounded p-2"
+        type="email"
+        name="email"
+        id="email"
+        formControlName="email"
+      />
+    </div>
+    <div class="flex flex-row justify-between text-xl m-2 items-center">
+      <label for="userName">Username</label>
+      <input
+        class="max-w-[250px] border-2 border-black rounded p-2"
+        type="text"
+        id="userName"
+        formControlName="userName"
+      />
+    </div>
+    <div class="flex flex-row justify-between text-xl m-2 items-center">
+      <label for="password">Password</label>
+      <input
+        class="max-w-[250px] border-2 border-black rounded p-2"
+        type="password"
+        id="password"
+        formControlName="password"
+      />
+    </div>
+    <div class="flex flex-row-reverse text-xl p-2">
+      <button
+        class="border-2 border-black rounded p-2 bg-slate-900 text-white"
+        type="submit"
+      >
+        Register
+      </button>
+    </div>
+  </fieldset>
+</form>
