@@ -10,8 +10,3 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
     restart: unless-stopped
-    networks:
-      - comp3133-local
-
-networks:
-  comp3133-local:

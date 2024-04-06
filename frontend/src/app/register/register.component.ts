@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
 import { SIGNUP } from '../graphql/graphql.queries';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -25,10 +26,10 @@ export class RegisterComponent {
     password: new FormControl(''),
   });
 
-  public constructor(private apollo: Apollo) {}
+  public constructor(private apolloService: Apollo, private router: Router) {}
 
-  public register() {
-    this.apollo
+  public onSubmit() {
+    this.apolloService
       .mutate({
         mutation: SIGNUP,
         variables: {
@@ -38,9 +39,12 @@ export class RegisterComponent {
         },
       })
       .subscribe({
-        next: (result) => {
-          const token = result.data;
-          console.log(token);
+        next: (result: any) => {
+          const token: string = result.data['signup']['token'];
+
+          localStorage.setItem('token', token);
+
+          this.router.navigateByUrl('employee-list');
         },
         error: (error) => {
           console.error(error);

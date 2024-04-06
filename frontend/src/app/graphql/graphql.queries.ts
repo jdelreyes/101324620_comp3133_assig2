@@ -14,7 +14,7 @@ export const GET_EMPLOYEES = gql`
 `;
 
 export const GET_EMPLOYEE = gql`
-  query GetEmployee(_id: String!) {
+  query GetEmployee($_id: String!) {
     getEmployee(_id: $_id) {
       _id
       firstName
