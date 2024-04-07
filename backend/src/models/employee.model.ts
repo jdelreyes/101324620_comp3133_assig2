@@ -25,11 +25,10 @@ const employeeSchema: Schema<EmployeeEntity> = new Schema({
   gender: {
     type: String,
     enum: ['male', 'female', 'other'],
-    required: [true, 'gender is required'],
+    default: 'other',
   },
   salary: {
     type: Number,
-    required: [true, 'salary is required'],
   },
 });
 

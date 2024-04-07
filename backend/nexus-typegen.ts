@@ -37,9 +37,9 @@ export interface NexusGenObjects {
     _id: string; // ID!
     email: string; // String!
     firstName: string; // String!
-    gender: NexusGenEnums['Gender']; // Gender!
+    gender?: NexusGenEnums['Gender'] | null; // Gender
     lastName: string; // String!
-    salary: number; // Float!
+    salary?: number | null; // Float
   }
   Mutation: {};
   Query: {};
@@ -70,9 +70,9 @@ export interface NexusGenFieldTypes {
     _id: string; // ID!
     email: string; // String!
     firstName: string; // String!
-    gender: NexusGenEnums['Gender']; // Gender!
+    gender: NexusGenEnums['Gender'] | null; // Gender
     lastName: string; // String!
-    salary: number; // Float!
+    salary: number | null; // Float
   }
   Mutation: { // field return type
     createEmployee: NexusGenRootTypes['Employee']; // Employee!
@@ -130,9 +130,9 @@ export interface NexusGenArgTypes {
     createEmployee: { // args
       email: string; // String!
       firstName: string; // String!
-      gender: NexusGenEnums['Gender']; // Gender!
+      gender?: NexusGenEnums['Gender'] | null; // Gender
       lastName: string; // String!
-      salary: number; // Float!
+      salary: number | null; // Float
     }
     deleteEmployee: { // args
       _id: string; // ID!

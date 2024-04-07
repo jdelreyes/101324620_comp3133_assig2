@@ -14,7 +14,7 @@ export const GET_EMPLOYEES = gql`
 `;
 
 export const GET_EMPLOYEE = gql`
-  query GetEmployee($_id: String!) {
+  query GetEmployee($_id: ID!) {
     getEmployee(_id: $_id) {
       _id
       firstName
@@ -53,48 +53,48 @@ export const CREATE_EMPLOYEE = gql`
     $firstName: String!
     $lastName: String!
     $email: String!
-    $gender: String!
-    $salary: String!
+    $salary: Float!
   ) {
     createEmployee(
       firstName: $firstName
       lastName: $lastName
       email: $email
-      gender: $gender
       salary: $salary
     ) {
       _id
       firstName
       lastName
       email
-      gender
       salary
     }
   }
 `;
 
 export const UPDATE_EMPLOYEE = gql`
-  mutation UpdateEmployee($_id: String!) {
-    updateEmployee(_id: $_id) {
+  mutation UpdateEmployee(
+    $_id: ID!
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+  ) {
+    updateEmployee(
+      _id: $_id
+      lastName: $lastName
+      email: $email
+      firstName: $firstName
+    ) {
       _id
       firstName
       lastName
       email
-      gender
-      salary
     }
   }
 `;
 
 export const DELETE_EMPLOYEE = gql`
-  mutation DeleteEmployee($_id: String!) {
+  mutation DeleteEmployee($_id: ID!) {
     deleteEmployee(_id: $_id) {
       _id
-      firstName
-      lastName
-      email
-      gender
-      salary
     }
   }
 `;

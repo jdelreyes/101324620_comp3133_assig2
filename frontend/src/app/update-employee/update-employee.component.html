@@ -1,0 +1,53 @@
+<form [formGroup]="addEmployeeForm" (submit)="onSave()">
+  <h1 class="hidden">{{ title }}</h1>
+  <fieldset
+    class="max-w-[450px] border-2 border-black rounded m-auto p-3 bg-slate-200"
+  >
+    <legend class="text-4xl bold m-2">{{ title }}</legend>
+    <div class="flex flex-row justify-between text-xl m-2 items-center">
+      <label for="firstName">First Name</label>
+      <input
+        class="max-w-[250px] border-2 border-black rounded p-2"
+        type="text"
+        name="firstName"
+        id="firstName"
+        formControlName="firstName"
+        [value]="addEmployeeForm.value.firstName"
+      />
+    </div>
+    <div class="flex flex-row justify-between text-xl m-2 items-center">
+      <label for="lastName">Last Name</label>
+      <input
+        class="max-w-[250px] border-2 border-black rounded p-2"
+        type="text"
+        id="lastName"
+        formControlName="lastName"
+        [value]="addEmployeeForm.value.lastName"
+      />
+    </div>
+    <div class="flex flex-row justify-between text-xl m-2 items-center">
+      <label for="emailId">Email Id</label>
+      <input
+        class="max-w-[250px] border-2 border-black rounded p-2"
+        type="text"
+        id="emailId"
+        formControlName="emailId"
+        [value]="addEmployeeForm.value.emailId"
+      />
+    </div>
+    <div class="flex flex-row-reverse text-xl p-2">
+      <button
+        class="border-2 rounded p-2 bg-red-500 text-white"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+      <button
+        class="border-2 rounded p-2 bg-green-500 text-white"
+        type="submit"
+      >
+        Save
+      </button>
+    </div>
+  </fieldset>
+</form>

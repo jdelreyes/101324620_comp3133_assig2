@@ -7,10 +7,41 @@
     >
       Add Employee
     </button>
-    <table>
+    <table class="w-full text-center table-auto border border-slate-500 my-2">
+      <tr>
+        <th class="border border-slate-600">First Name</th>
+        <th class="border border-slate-600">Last Name</th>
+        <th class="border border-slate-600">Email Id</th>
+        <th class="border border-slate-600">Actions</th>
+      </tr>
       @for (employee of employees; track employee._id) {
-        
-        
+      <tr>
+        <td class="border-slate-700 border">{{ employee.firstName }}</td>
+        <td class="border-slate-700 border">{{ employee.lastName }}</td>
+        <td class="border-slate-700 border">{{ employee.email }}</td>
+        <td
+          class="flex flex-row justify-center items-center border-slate-700 border"
+        >
+          <button
+            class="border-2 rounded p-2 bg-cyan-500 text-white"
+            (click)="updateEmployee(employee._id)"
+          >
+            Update
+          </button>
+          <button
+            class="border-2 rounded p-2 bg-red-500 text-white"
+            (click)="deleteEmployee(employee._id)"
+          >
+            Delete
+          </button>
+          <button
+            class="border-2 rounded p-2 bg-cyan-500 text-white"
+            (click)="viewEmployee(employee._id)"
+          >
+            View
+          </button>
+        </td>
+      </tr>
       }
     </table>
   </div>

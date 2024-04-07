@@ -7,6 +7,7 @@ import {
   idArg,
 } from 'nexus/dist/core';
 import { NexusGenObjects } from '../../nexus-typegen';
+import { Gender } from './gender.graphql';
 
 export const Employee: NexusObjectTypeDef<'Employee'> = objectType({
   name: 'Employee',
@@ -15,8 +16,8 @@ export const Employee: NexusObjectTypeDef<'Employee'> = objectType({
     t.nonNull.string('firstName');
     t.nonNull.string('lastName');
     t.nonNull.string('email');
-    t.nonNull.field('gender', { type: 'Gender' });
-    t.nonNull.float('salary');
+    t.field('gender', { type: 'Gender' });
+    t.float('salary');
   },
 });
 
@@ -55,8 +56,8 @@ export const EmployeeMutation = extendType({
         firstName: nonNull(stringArg()),
         lastName: nonNull(stringArg()),
         email: nonNull(stringArg()),
-        gender: nonNull(arg({ type: 'Gender', default: 'other' })),
-        salary: nonNull(floatArg()),
+        gender: arg({ type: 'Gender' }),
+        salary: floatArg({ default: 10.0 }),
       },
 
       async resolve(_, args, ctx): Promise<NexusGenObjects['Employee']> {

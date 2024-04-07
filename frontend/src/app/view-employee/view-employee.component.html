@@ -1,0 +1,20 @@
+<section>
+  <h1 class="hidden">{{ title }}</h1>
+  <fieldset
+    class="max-w-[450px] border-2 border-black rounded m-auto p-3 bg-slate-200"
+  >
+    <legend class="text-4xl bold m-2">{{ title }}</legend>
+    <div class="flex flex-row items-center">
+      <div class="font-bold basis-1/2">First Name</div>
+      <div>{{ employee?.firstName }}</div>
+    </div>
+    <div class="flex flex-row items-center">
+      <div class="font-bold basis-1/2">Last Name</div>
+      <div>{{ employee?.lastName }}</div>
+    </div>
+    <div class="flex flex-row items-center">
+      <div class="font-bold basis-1/2">Email ID</div>
+      <div>{{ employee?.email }}</div>
+    </div>
+  </fieldset>
+</section>

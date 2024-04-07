@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
-import { GET_EMPLOYEES } from '../graphql/graphql.queries';
+import { DELETE_EMPLOYEE, GET_EMPLOYEES } from '../graphql/graphql.queries';
 import { Employee } from '../employee';
 
 @Component({
@@ -24,16 +24,40 @@ export class EmployeeListComponent {
     this.router.navigateByUrl('add-employee');
   }
 
+  public updateEmployee(_id: string) {
+    this.router.navigateByUrl(`update-employee/${_id}`);
+  }
+
+  public viewEmployee(_id: string) {
+    this.router.navigateByUrl(`view-employee/${_id}`);
+  }
+
+  public deleteEmployee(_id: string) {
+    this.apolloService
+      .mutate({
+        mutation: DELETE_EMPLOYEE,
+        variables: {
+          _id: _id,
+        },
+      })
+      .subscribe({
+        next: (result: any) => {
+          window.location.reload()
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+  }
+
   public ngOnInit() {
     this.querySubscription = this.apolloService
       .watchQuery<any>({
         query: GET_EMPLOYEES,
       })
       .valueChanges.subscribe(({ data, loading }) => {
-        console.log(data);
         this.loading = loading;
         this.employees = data.getEmployees;
       });
-
   }
 }

@@ -11,9 +11,9 @@ type Employee {
   _id: ID!
   email: String!
   firstName: String!
-  gender: Gender!
+  gender: Gender
   lastName: String!
-  salary: Float!
+  salary: Float
 }
 
 enum Gender {
@@ -23,7 +23,7 @@ enum Gender {
 }
 
 type Mutation {
-  createEmployee(email: String!, firstName: String!, gender: Gender! = other, lastName: String!, salary: Float!): Employee!
+  createEmployee(email: String!, firstName: String!, gender: Gender, lastName: String!, salary: Float = 10): Employee!
   deleteEmployee(_id: ID!): Employee!
   login(password: String!, userName: String!): Auth!
   signup(email: String!, password: String!, userName: String!): Auth!
