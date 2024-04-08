@@ -1,0 +1,19 @@
+{
+  "name": "comp3133-assignment2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "frontend:start": "cd frontend && npm start",
+    "backend:start": "cd backend && npm run db:dev:up && npm start",
+    "start": "concurrently 'npm run frontend:start' 'npm run backend:start'",
+    "db:dev:rm": "cd backend && npm run db:dev:rm",
+    "i:dev": "cd frontend && npm i && cd ../backend && npm i"
+  },
+  "keywords": [],
+  "author": "Jerome Delos Reyes",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
