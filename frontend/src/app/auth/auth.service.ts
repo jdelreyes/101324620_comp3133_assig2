@@ -5,15 +5,7 @@ import { tap, delay } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  isLoggedIn = false;
-  redirectUrl: string | null = null;
-  login(): Observable<boolean> {
-    return of(true).pipe(
-      delay(1000),
-      tap(() => (this.isLoggedIn = true))
-    );
-  }
-  logout(): void {
-    this.isLoggedIn = false;
+  login(): boolean {
+    return !!localStorage.getItem('token');
   }
 }

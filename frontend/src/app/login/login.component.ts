@@ -31,7 +31,9 @@ export class LoginComponent {
       })
       .subscribe({
         next: (result: any) => {
-          const token: string = result.data['signup']['token'];
+          console.log('some');
+          console.log(result)
+          const token: string = result.data['login']['token'];
 
           localStorage.setItem('token', token);
 

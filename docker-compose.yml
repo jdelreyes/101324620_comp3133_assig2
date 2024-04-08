@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  frontend-employee-management:
+    container_name: frontend-employee-management
+    image: frontend-employee-management
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend-employee-management
+    networks:
+      - employee-management
+
+  backend-employee-management:
+    container_name: backend-employee-management
+    image: backend-employee-management
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    env_file:
+      - ./backend/.env
+    environment:
+      - MONGODB_NAME=mongodb-employee-management
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb-employee-management
+    networks:
+      - employee-management
+
+  mongodb-employee-management:
+    container_name: mongodb-employee-management
+    image: mongo:7.0.5
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    restart: unless-stopped
+    networks:
+      - employee-management
+
+networks:
+  employee-management:
+    driver: bridge
